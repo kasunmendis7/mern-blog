@@ -2,13 +2,17 @@ import express from "express";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
 
+dotenv.config(); 
+
+const mongodbURI = process.env.MONGODB_URI; 
+
 mongoose
-  .connect('mongodb+srv://kasun:kasun@mern-blog.ivr3glf.mongodb.net/mern-blog?retryWrites=true&w=majority&appName=mern-blog')
+  .connect(mongodbURI)
   .then(() => {
     console.log("MongoDb is connected");
   })
   .catch((err) => {
-    console.log(err);
+    console.error("MongoDB connection error:", err);
   });
 
 const app = express();

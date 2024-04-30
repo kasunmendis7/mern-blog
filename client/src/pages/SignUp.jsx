@@ -42,7 +42,7 @@ export default function SignUp() {
         {/* left */}
         <div className='flex-1'>
           <Link to='/' className='font-bold dark:text-white text-4xl'>
-            <span className='px-2 py-1 bg-gradient-to-r from-sky-600 via-sky-500 to-sky-400 rounded-xl text-white'>
+            <span className='px-2 py-1 bg-gradient-to-r from-cyan-500 via-cyan-500 to-cyan-400 rounded-xl text-white'>
               Mendis'
             </span>
             Blog
@@ -54,8 +54,8 @@ export default function SignUp() {
         </div>
         {/* right */}
 
-        <div className='flex flex-col items-stretch' onSubmit={handleSubmit}>
-          <form className='flex flex-col gap-4 '>
+        <div className='flex-1'>
+          <form className='flex flex-col gap-4' onSubmit={handleSubmit}>
             <div>
               <Label value='Your Username' />
               <TextInput type='text' placeholder='Username' id='username' onChange={handleChange} />
@@ -68,7 +68,7 @@ export default function SignUp() {
               <Label value='Your Password' />
               <TextInput type='password' placeholder='Password' id='password' onChange={handleChange} />
             </div>
-            <Button className='bg-gradient-to-r from-sky-600 via-sky-500 to-sky-400 rounded-2xl' type='submit' disabled={loading}>
+            <Button gradientDuoTone='cyanToBlue' pill type='submit' disabled={loading}>
               {loading ? (
                 <>
                   <Spinner size='sm' />

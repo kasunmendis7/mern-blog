@@ -28,31 +28,34 @@ export default function Header() {
         <AiOutlineSearch />
       </Button>
 
+      <Navbar.Collapse>
+        <Navbar.Link active={path === "/"} as={'div'}>
+          <Link className='px-4' to='/'>Home</Link>
+        </Navbar.Link>
+        <Navbar.Link active={path === "/about"} as={'div'}>
+          <Link className='px-4' to='/about'>About</Link>
+        </Navbar.Link>
+        <Navbar.Link active={path === "/projects"} as={'div'}>
+          <Link className='px-4' to='/projects'>Projects</Link>
+        </Navbar.Link>
+      </Navbar.Collapse>
+
       <div className='flex gap-2 md:order-2'>
-        <Button className='w-12 h-10 hidden sm:inline' color='gray' pill>
+        <Button className='w-12 h-10 hidden sm:inline py-4' color='gray' pill>
           <FaMoon />
         </Button>
 
-        <Link to='/sign-in'>
-          <Button gradientDuoTone='purpleToBlue'>
+        <Link className='self-center whitespace-nowrap text-sm sm:text-xl font-semibold dark:text-white' to='/sign-in'>
+          <Button className='bg-gradient-to-r from-sky-600 via-sky-500 to-sky-400 rounded-xl px-6'>
             Sign In
           </Button>
         </Link>
 
-        <Navbar.Toggle />
+        <Navbar.Toggle  />
+
         </div>
 
-      <Navbar.Collapse>
-        <Navbar.Link active={path === "/"} as={'div'}>
-          <Link to='/'>Home</Link>
-        </Navbar.Link>
-        <Navbar.Link active={path === "/about"} as={'div'}>
-          <Link to='/about'>About</Link>
-        </Navbar.Link>
-        <Navbar.Link active={path === "/projects"} as={'div'}>
-          <Link to='/projects'>Projects</Link>
-        </Navbar.Link>
-      </Navbar.Collapse>
+      
 
     </Navbar>
   );

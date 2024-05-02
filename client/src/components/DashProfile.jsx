@@ -8,9 +8,10 @@ import 'react-circular-progressbar/dist/styles.css';
 import { updateStart, updateSuccess, updateFailure, deleteUserStart, deleteUserSuccess, deleteUserFailure, signoutSuccess } from '../redux/user/userSlice';
 import { useDispatch } from 'react-redux';
 import { HiOutlineExclamationCircle } from 'react-icons/hi';
+import { Link } from 'react-router-dom';
 
 export default function DashProfile() {
-  const { currentUser, error } = useSelector(state => state.user);
+  const { currentUser, error, loading } = useSelector(state => state.user);
   const [imageFile, setImageFile] = useState(null);
   const [imageFileUrl, setImageFileUrl] = useState(null);
   const [imageFileUploadProgress, setImageFileUploadProgress] = useState(null);
@@ -171,12 +172,21 @@ export default function DashProfile() {
         <TextInput type='email' id='email' placeholder='email'
           defaultValue={currentUser.email} onChange={handleChange} />
         <TextInput type='password' id='password' placeholder='password' onChange={handleChange} />
-        <Button type='submit' gradientDuoTone='cyanToBlue' outline>
-          Update
+        <Button type='submit' gradientDuoTone='cyanToBlue' outline disabled={loading || imageFileUploading}>
+          {loading ? 'Loading...' : 'Update'}
         </Button>
+        {
+          currentUser.isAdmin && (
+            <Link to={'/create-post'}>
+              <Button type='button' gradientDuoTone='cyanToBlue' className='w-full'>
+                Create a post
+              </Button>
+            </Link>
+          )
+        }
       </form>
       <div className='text-red-500 flex justify-between mt-5'>
-        <span onClick={()=>setShowModal(true)} className='cursor-pointer'>Delete Account</span>
+        <span onClick={() => setShowModal(true)} className='cursor-pointer'>Delete Account</span>
         <span onClick={handleSignout} className='cursor-pointer'>Sign Out</span>
       </div>
       {updateUserSuccess && (
@@ -194,7 +204,7 @@ export default function DashProfile() {
           {error}
         </Alert>
       )}
-      <Modal show={showModal} onClose={()=>setShowModal(false)} popup size='md'>
+      <Modal show={showModal} onClose={() => setShowModal(false)} popup size='md'>
         <Modal.Header />
         <Modal.Body>
           <div className='text-center'>
@@ -204,14 +214,14 @@ export default function DashProfile() {
               <Button color='failure' onClick={handleDeleteUser}>
                 Yes, I'm sure
               </Button>
-              <Button color='gray' onClick={()=>setShowModal(false)}>
+              <Button color='gray' onClick={() => setShowModal(false)}>
                 No, cancel
               </Button>
             </div>
           </div>
         </Modal.Body>
       </Modal>
-      
+
     </div>
   );
 }

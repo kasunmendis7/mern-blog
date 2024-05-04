@@ -143,7 +143,7 @@ export default function UpdatePost() {
           />
           <Button
             type='button'
-            gradientDuoTone='purpleToBlue'
+            gradientDuoTone='cyanToBlue'
             size='sm'
             outline
             onClick={handleUpdloadImage}
@@ -179,7 +179,7 @@ export default function UpdatePost() {
             setFormData({ ...formData, content: value });
           }}
         />
-        <Button type='submit' gradientDuoTone='purpleToPink'>
+        <Button type='submit' gradientDuoTone='cyanToBlue'>
           Update post
         </Button>
         {publishError && (

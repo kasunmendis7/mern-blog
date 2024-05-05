@@ -4,6 +4,7 @@ import DashSidebar from "../components/DashSidebar";
 import DashProfile from "../components/DashProfile";
 import DashPosts from "../components/DashPosts";
 import DashUsers from "../components/DashUsers";
+import DashComments from "../components/DashComments";
 
 export default function Dashboard() {
   const location = useLocation();
@@ -18,14 +19,17 @@ export default function Dashboard() {
   return (
     <div className='min-h-screen flex flex-col md:flex-row'>
       <div className='md:w-56'>
-        {/*Sidebar*/}
+        {/* Sidebar */}
         <DashSidebar />
       </div>
-      {/*Profile...*/}
+      {/* Profile... */}
       {tab === 'profile' && <DashProfile />}
       {/* Posts */}
       {tab === 'posts' && <DashPosts />}
-      {/*Users*/}
+      {/* Users */}
       {tab === 'users' && <DashUsers />}
+      {/* Comments */}
+      {tab === 'comments' && <DashComments />}
+
     </div>)
 }

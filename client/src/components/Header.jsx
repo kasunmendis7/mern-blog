@@ -54,8 +54,8 @@ export default function Header() {
         to='/'
         className='self-center whitespace-nowrap text-sm sm:text-xl font-semibold dark:text-white'
       >
-        <span className='px-2 py-1 bg-gradient-to-r from-cyan-600 via-cyan-500 to-cyan-300 rounded-lg text-white'>
-          Sahand's
+        <span className='px-2 py-1 bg-gradient-to-r from-cyan-500 via-cyan-400 to-cyan-300 rounded-lg text-white'>
+          Mendis'
         </span>
         Blog
       </Link>
